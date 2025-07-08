@@ -43,6 +43,9 @@ calculator/
 │   ├── Calculator.java
 │   └── Main.java
 ├── lv3/                  # Lv3. 심화 계산기
+│   ├── OperatorType.java
+│   ├── ArithmeticCalculator.java
+│   └── Main.java
 └── README.md
 ```
 
@@ -55,6 +58,7 @@ calculator/
 - 사용자 입력을 받아 계산 수행
 - 특정 입력 받았을 때 반복 실행 종료
 
+&nbsp;
 
 ### Lv 2.
 #### Calculator.java
@@ -70,28 +74,62 @@ calculator/
 - 사용자 입력을 받아 계산 수행
 - 계산기 객체를 활용하여 연산 및 결과 기록
 - 특정 입력 받았을 때 반복 실행 종료
-- 종료 시 결과 목록 조회 및 삭제 기능 시연
+- 종료 시 `runTest()` 메서드를 실행해 결과 목록 조회 및 삭제 기능 시연
+
+&nbsp;
+
+### Lv 3.
+#### OperatorType.java
+- 연산 기호 ADD(`+`), SUB(`-`), MUL(`*`), DIV(`/`)를 enum 상수로 정의
+- `Optional<OperatorType> findOperator(String operator)`를 통해 입력 문자열과 매칭되는 연산 기호 반환
+
+#### Calculator.java
+| 메서드 | 설명 |
+|--------|------|
+| `Optional<Double> calculate(T num1, T num2, OperatorType operator)` | 제네릭 숫자 입력 받아 double로 연산 수행, 결과를 리스트에 저장 |
+| `List<Double> getResults()` | 저장된 연산 결과 조회 |
+| `void setResults(List<Double> results)` | 결과 리스트 전체 덮어쓰기 |
+| `void removeResult()` | 가장 오래된 결과 1개 삭제 |
+| `List<Double> getFilteredResults(double threshold)` | 기준값보다 큰 결과들만 필터링해서 반환 |
+
+
+#### Main.java
+- 사용자 입력을 받아 계산 수행
+- 계산기 객체를 활용하여 연산 및 결과 기록
+- 특정 입력 받았을 때 반복 실행 종료
+- 종료 시 `runTest()` 메서드를 실행해 필터링 결과 조회 기능 시연
 
 
 &nbsp;
 
 ## 개발 중 해결한 문제들
 
-#### 1. `nextInt()` 후 `nextLine()`이 바로 안 먹힘
+#### 🟨 Lv 1. `nextInt()` 후 `nextLine()`이 바로 안 먹힘
 - **원인:** `nextInt()`가 숫자 입력만 처리하고, 개행문자 `\n`은 버퍼에 남기기 때문
 - **해결:** `scanner.nextLine()`을 추가로 호출하여 개행문자를 소비
 
-#### 2. `nextInt()`에 문자열 입력 시 예외 발생
+#### 🟨 Lv 1. `nextInt()`에 문자열 입력 시 예외 발생
 - **원인:** `int` 타입에 문자열이 들어와서 `InputMismatchException` 발생
 - **해결:** `try-catch`로 예외 처리하고, 입력 실패 시 루프 재시작
 
-#### 3. 연산자 입력이 공백일 경우 `charAt(0)` 예외 발생
+#### 🟨 Lv 1. 연산자 입력이 공백일 경우 `charAt(0)` 예외 발생
 - **원인:** 빈 문자열에서 `charAt(0)` 호출 시 `StringIndexOutOfBoundsException`
 - **해결:** `.trim().isEmpty()`로 먼저 빈 문자열 검사
 
-#### 4. int에 null 반환 불가
+#### 🟦 Lv 2. int에 null 반환 불가
 - **원인:** `int`는 primitive type이므로 `null` 저장 불가
 - **해결:** `Integer` (Wrapper Class)로 변경하여 null 사용 가능
+
+#### 🟩 Lv 3. Enum의 적용 범위 고민
+- **원인:** 연산자 기호만 저장할지, 계산 로직까지 포함할지 고민
+- **해결:** 연산자는 enum에 문자열 기호만 저장, 계산은 `ArithmeticCalculator` 내부에서 수행
+
+#### 🟩 Lv 3. Generic의 적용 방법 고민
+- **원인:** 결과 콘텐츠 필드 타입을 T로 두지, Double로 고정할지 결정 필요
+- **해결:** 다양한 숫자 타입 입력을 위해 T extends Number로 제약. 계산은 doubleValue()로 처리, 결과는 List<Double>로 고정
+
+#### 🟦 Lv 2. & 🟩 Lv 3 코드의 가독성
+- **해결:** 테스트 코드들을 `runTest()` 메서드로 분리 
 
 &nbsp;
 
