@@ -31,7 +31,7 @@ public class ArithmeticCalculator<T extends Number> {
                 break;
             default:
                 System.out.println("잘못된 연산입니다.");
-                return null;
+                return Optional.empty();
         }
         results.add(result);
         return Optional.of(result);
