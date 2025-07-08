@@ -83,7 +83,7 @@ calculator/
 - 연산 기호 ADD(`+`), SUB(`-`), MUL(`*`), DIV(`/`)를 enum 상수로 정의
 - `Optional<OperatorType> findOperator(String operator)`를 통해 입력 문자열과 매칭되는 연산 기호 반환
 
-#### Calculator.java
+#### ArithmeticCalculator.java
 | 메서드 | 설명 |
 |--------|------|
 | `Optional<Double> calculate(T num1, T num2, OperatorType operator)` | 제네릭 숫자 입력 받아 double로 연산 수행, 결과를 리스트에 저장 |
@@ -135,8 +135,8 @@ calculator/
 
 
 ## 향후 개선 방향
-
-- 
+- 잘못된 입력이 들어오는 경우, 해당 단계부터 다시 입력하도록 수정
+- enum에 apply method를 구현하여 코드 간결하게 정리
 
 &nbsp;
 
