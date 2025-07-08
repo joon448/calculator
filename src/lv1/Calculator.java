@@ -1,6 +1,5 @@
 package lv1;
 
-import javax.crypto.spec.PSource;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
