@@ -1,5 +1,7 @@
 package lv1;
 
+import javax.crypto.spec.PSource;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
@@ -8,11 +10,30 @@ public class Calculator {
 
 
         while(true) {
-            // 양의 정수 입력
-            System.out.print("첫 번째 숫자를 입력하세요 (0 이상의 정수): ");
-            int num1 = scanner.nextInt();
-            System.out.print("두 번째 숫자를 입력하세요 (0 이상의 정수): ");
-            int num2 = scanner.nextInt();
+            // 정수 입력
+            int num1;
+            int num2;
+            try{
+                //첫 번째 정수 입력
+                System.out.print("첫 번째 숫자를 입력하세요 (0 이상의 정수): ");
+                num1 = scanner.nextInt();
+                if (num1 < 0){
+                    System.out.println("0 이상의 정수를 입력해주세요.");
+                    continue;
+                }
+                //두 번째 정수 입력
+                System.out.print("두 번째 숫자를 입력하세요 (0 이상의 정수): ");
+                num2 = scanner.nextInt();
+                if (num2 < 0) {
+                    System.out.println("0 이상의 정수를 입력해주세요.");
+                    continue;
+                }
+            } catch(InputMismatchException e){
+                System.out.println("0 이상의 정수를 입력해주세요.");
+                scanner.nextLine();
+                continue;
+            }
+
             //개행 문자 처리
             scanner.nextLine();
 
@@ -36,8 +57,7 @@ public class Calculator {
                     // 나눗셈 분모 0 예외 처리
                     if (num2 == 0) {
                         System.out.println("나눗셈 연산에서 분모(두 번째 정수)에 0이 입력될 수 없습니다.");
-                        scanner.close();
-                        System.exit(0);
+                        continue;
                     }
                     result = num1 / num2;
                     break;
