@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        Calculator calculator = new Calculator();
         while(true) {
             int num1;
             int num2;
@@ -37,29 +37,11 @@ public class Main {
                 System.out.println("잘못된 입력입니다.");
             } else {
                 char operator = operatorInput.charAt(0);
-                int result = 0;
-                switch (operator) {
-                    case '*':
-                        result = num1 * num2;
-                        break;
-                    case '+':
-                        result = num1 + num2;
-                        break;
-                    case ',':
-                    case '.':
-                    default:
-                        System.out.println("잘못된 입력입니다.");
-                        continue;
-                    case '-':
-                        result = num1 - num2;
-                        break;
-                    case '/':
-                        if (num2 == 0) {
-                            System.out.println("나눗셈 연산에서 분모(두 번째 정수)에 0이 입력될 수 없습니다.");
-                            continue;
-                        }
 
-                        result = num1 / num2;
+                //Calculator class 이용하여 연산 처리
+                Integer result = calculator.calculate(num1, num2, operator);
+                if (result  == null) {
+                    continue;
                 }
 
                 System.out.println(result);
