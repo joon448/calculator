@@ -41,4 +41,10 @@ public class Calculator {
     public void setResults(List<Integer> results) {
         this.results = results;
     }
+
+    public void removeResult(){
+        if (!results.isEmpty()) {
+            results.removeFirst();
+        }
+    }
 }
