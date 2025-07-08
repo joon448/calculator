@@ -65,7 +65,13 @@ public class Main {
             }
         }
 
-        // Calculator methods 테스트 코드
+        // Calculator methods 테스트
+        runTest(calculator);
+        scanner.close();
+    }
+
+    public static void runTest(Calculator calculator) {
+        // Calculator methods 테스트
         System.out.println("=======Calculator methods 테스트=======");
         System.out.println("현재까지의 연산 결과 목록: " + calculator.getResults());
         System.out.println("가장 먼저 저장된 결과를 삭제합니다..");
@@ -74,7 +80,5 @@ public class Main {
         System.out.println("연산 결과를 [1, 2, 3, 4]로 설정합니다..");
         calculator.setResults(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
         System.out.println("설정 후 연산 결과 목록: " + calculator.getResults());
-
-        scanner.close();
     }
 }
