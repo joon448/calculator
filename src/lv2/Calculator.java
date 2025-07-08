@@ -44,7 +44,7 @@ public class Calculator {
 
     public void removeResult(){
         if (!results.isEmpty()) {
-            results.removeFirst();
+            results.remove(0);
         }
     }
 }
