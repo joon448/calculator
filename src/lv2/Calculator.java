@@ -30,6 +30,7 @@ public class Calculator {
                 System.out.println("잘못된 입력입니다.");
                 return null;
         }
+        results.add(result);
         return result;
     }
 }
