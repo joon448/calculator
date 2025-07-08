@@ -17,6 +17,27 @@ public class Calculator {
         //사칙연산 기호 입력
         System.out.print("사칙연산 기호를 입력하세요: ");
         char operator = scanner.nextLine().charAt(0);
+
+        //연산
+        int result = 0;
+        switch (operator){
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                result = num1 / num2;
+                break;
+            default:
+                System.out.println("잘못된 입력입니다.");
+                scanner.close();
+                System.exit(0);
+        }
         scanner.close();
     }
 }
