@@ -58,13 +58,9 @@ public class Main {
         // Calculator methods 테스트 코드
         System.out.println("=======Calculator methods 테스트=======");
         System.out.println("현재까지의 연산 결과 목록: " + calculator.getResults());
-        System.out.println("가장 먼저 저장된 결과를 삭제합니다..");
-        calculator.removeResult();
-        System.out.println("삭제 후 연산 결과 목록: " + calculator.getResults());
-        System.out.println("연산 결과를 [1, 2, 3, 4]로 설정합니다..");
-        calculator.setResults(new ArrayList<>(Arrays.asList(1.0, 2.0, 3.0, 4.0)));
-        System.out.println("설정 후 연산 결과 목록: " + calculator.getResults());
-
+        System.out.print("결과 조회 기준값을 입력하세요(기준값보다 큰 값만 출력): ");
+        double threshold = scanner.nextDouble();
+        System.out.println("필터링 후 연산 결과 목록: " + calculator.getFilteredResults(threshold));
         scanner.close();
     }
 }
