@@ -1,11 +1,14 @@
 package lv1;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Calculator {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("첫 번째 숫자를 입력하세요 (0 이상의 정수): ");
+        int num1 = scanner.nextInt();
+        System.out.print("두 번째 숫자를 입력하세요 (0 이상의 정수): ");
+        int num2 = scanner.nextInt();
+        scanner.close();
     }
 }
