@@ -55,12 +55,27 @@ public class Main {
             }
         }
 
-        // Calculator methods 테스트 코드
+        // Calculator methods 테스트
+        runTest(scanner, calculator);
+        scanner.close();
+    }
+
+    public static void runTest(Scanner scanner, ArithmeticCalculator<Double> calculator) {
+        // Calculator methods 테스트
         System.out.println("=======Calculator methods 테스트=======");
         System.out.println("현재까지의 연산 결과 목록: " + calculator.getResults());
-        System.out.print("결과 조회 기준값을 입력하세요(기준값보다 큰 값만 출력): ");
-        double threshold = scanner.nextDouble();
+        double threshold;
+        while (true) {
+            System.out.print("결과 조회 기준값을 입력하세요(기준값보다 큰 값만 출력): ");
+            try {
+                threshold = scanner.nextDouble();
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("잘못된 입력입니다.");
+                scanner.nextLine();
+            }
+        }
         System.out.println("필터링 후 연산 결과 목록: " + calculator.getFilteredResults(threshold));
-        scanner.close();
     }
 }
