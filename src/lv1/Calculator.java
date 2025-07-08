@@ -8,7 +8,6 @@ public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
         while(true) {
             // 정수 입력
             int num1;
@@ -39,7 +38,13 @@ public class Calculator {
 
             //사칙연산 기호 입력
             System.out.print("사칙연산 기호를 입력하세요: ");
-            char operator = scanner.nextLine().charAt(0);
+            String operatorInput =  scanner.nextLine();
+            //사칙연산 기호 입력 예외 처리
+            if (operatorInput.isEmpty()){
+                System.out.println("잘못된 입력입니다.");
+                continue;
+            }
+            char operator = operatorInput.charAt(0);
 
             //연산
             int result = 0;
