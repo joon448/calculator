@@ -3,6 +3,7 @@ package lv3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ArithmeticCalculator<T extends Number> {
     private List<Double> results =  new ArrayList<>();
@@ -49,5 +50,11 @@ public class ArithmeticCalculator<T extends Number> {
         if (!results.isEmpty()) {
             results.remove(0);
         }
+    }
+
+    public List<Double> getFilteredResults(double threshold){
+        return results.stream()
+                .filter(result -> result > threshold)
+                .collect(Collectors.toList());
     }
 }
