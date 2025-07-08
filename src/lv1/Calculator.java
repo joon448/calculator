@@ -38,6 +38,7 @@ public class Calculator {
                 scanner.close();
                 System.exit(0);
         }
+        System.out.printf("%d %c %d = %d", num1, operator, num2, result);
         scanner.close();
     }
 }
