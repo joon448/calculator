@@ -86,11 +86,11 @@ calculator/
 #### ArithmeticCalculator.java
 | 메서드 | 설명 |
 |--------|------|
-| `Optional<Double> calculate(T num1, T num2, OperatorType operator)` | 제네릭 숫자 입력 받아 double로 연산 수행, 결과를 리스트에 저장 |
-| `List<Double> getResults()` | 저장된 연산 결과 조회 |
-| `void setResults(List<Double> results)` | 결과 리스트 전체 덮어쓰기 |
+| `Optional<BigDecimal> calculate(T num1, T num2, OperatorType operator)` | 제네릭 숫자 입력 받아 BigDecimal로 연산 수행, 결과를 리스트에 저장 |
+| `List<BigDecimal> getResults()` | 저장된 연산 결과 조회 |
+| `void setResults(List<BigDecimal> results)` | 결과 리스트 전체 덮어쓰기 |
 | `void removeResult()` | 가장 오래된 결과 1개 삭제 |
-| `List<Double> getFilteredResults(double threshold)` | 기준값보다 큰 결과들만 필터링해서 반환 |
+| `List<BigDecimal> getFilteredResults(double threshold)` | 기준값보다 큰 결과들만 필터링해서 반환 |
 
 
 #### Main.java
@@ -127,6 +127,7 @@ calculator/
 #### 🟩 Lv 3. Generic의 적용 방법 고민
 - **원인:** 결과 콘텐츠 필드 타입을 T로 두지, Double로 고정할지 결정 필요
 - **해결:** 다양한 숫자 타입 입력을 위해 T extends Number로 제약. 계산은 doubleValue()로 처리, 결과는 List<Double>로 고정
+- **추가 해결:** int 및 double을 Number로 받아옴. 계산은 BigDecimal 타입으로 처리
 
 #### 🟦 Lv 2. & 🟩 Lv 3 코드의 가독성
 - **해결:** 테스트 코드들을 `runTest()` 메서드로 분리 
@@ -136,7 +137,6 @@ calculator/
 
 ## 향후 개선 방향
 - 잘못된 입력이 들어오는 경우, 해당 단계부터 다시 입력하도록 수정
-- enum에 apply method를 구현하여 코드 간결하게 정리
 
 &nbsp;
 
