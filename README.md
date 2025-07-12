@@ -64,9 +64,9 @@ calculator/
 #### Calculator.java
 | 메서드 | 설명 |
 |--------|------|
-| `Integer calculate(int num1, int num2, char operator)` | 사칙연산 수행 후 결과 저장 |
-| `List<Integer> getResults()` | 저장된 연산 결과 조회 |
-| `void setResults(List<Integer> results)` | 결과 리스트 전체 덮어쓰기 |
+| `Double calculate(int num1, int num2, char operator)` | 사칙연산 수행 후 결과 저장 |
+| `List<Double> getResults()` | 저장된 연산 결과 조회 |
+| `void setResults(List<Double> results)` | 결과 리스트 전체 덮어쓰기 |
 | `void removeResult()` | 가장 오래된 결과 1개 삭제 |
 
 
@@ -114,23 +114,31 @@ calculator/
 
 #### 🟨 Lv 1. 연산자 입력이 공백일 경우 `charAt(0)` 예외 발생
 - **원인:** 빈 문자열에서 `charAt(0)` 호출 시 `StringIndexOutOfBoundsException`
-- **해결:** `.trim().isEmpty()`로 먼저 빈 문자열 검사
+- **해결:** `.trim().length()`로 빈 문자열 및 두 글자 이상의 입력 검사
 
-#### 🟦 Lv 2. int에 null 반환 불가
-- **원인:** `int`는 primitive type이므로 `null` 저장 불가
-- **해결:** `Integer` (Wrapper Class)로 변경하여 null 사용 가능
+#### 🟦 Lv 2. primitive type에 null 반환 불가
+- **원인:** `double`는 primitive type이므로 `null` 저장 불가
+- **해결:** `Double` (Wrapper Class)로 변경하여 null 사용 가능
+- 
+#### 🟦 Lv 2. 자동 빌드가 안 되는 문제
+- **원인:** 인텔리제이의 자동 빌드 설정이 꺼짐
+- **해결:** Settings -> Compiler -> Build project automatically 체크
+- 
+#### 🟦 Lv 2. src 폴더가 인식되지 않는 문제 
+- **원인:** 인텔리제이의 오류인 것 같다
+- **해결:** File -> Project Structure -> Modules -> import Module -> 프로젝트 경로 -> Create module from existing sources -> 모듈 생성하기
 
 #### 🟩 Lv 3. Enum의 적용 범위 고민
 - **원인:** 연산자 기호만 저장할지, 계산 로직까지 포함할지 고민
-- **해결:** 연산자는 enum에 문자열 기호만 저장, 계산은 `ArithmeticCalculator` 내부에서 수행
+- **해결:** 연산자는 enum에 문자열 기호만 저장, 계산은 `ArithmeticCalculator` 내부에서 수행함
 
 #### 🟩 Lv 3. Generic의 적용 방법 고민
 - **원인:** 결과 콘텐츠 필드 타입을 T로 두지, Double로 고정할지 결정 필요
 - **해결:** 다양한 숫자 타입 입력을 위해 T extends Number로 제약. 계산은 doubleValue()로 처리, 결과는 List<Double>로 고정
-- **추가 해결:** int 및 double을 Number로 받아옴. 계산은 BigDecimal 타입으로 처리
+- **추가 해결:** int 및 double을 Number로 받아옴. 계산은 BigDecimal 타입으로 처리함
 
 #### 🟦 Lv 2. & 🟩 Lv 3 코드의 가독성
-- **해결:** 테스트 코드들을 `runTest()` 메서드로 분리 
+- **해결:** 테스트 코드들을 `runTest()` 메서드로 분리함
 
 &nbsp;
 
