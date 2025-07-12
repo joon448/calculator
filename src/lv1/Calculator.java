@@ -37,16 +37,16 @@ public class Calculator {
 
             //사칙연산 기호 입력
             System.out.print("사칙연산 기호를 입력하세요: ");
-            String operatorInput =  scanner.nextLine();
+            String operatorInput =  scanner.nextLine().trim();
             //사칙연산 기호 입력 예외 처리
-            if (operatorInput.isEmpty()){
+            if (operatorInput.length() != 1){
                 System.out.println("잘못된 입력입니다.");
                 continue;
             }
             char operator = operatorInput.charAt(0);
 
             //연산
-            int result = 0;
+            double result = 0.0;
             switch (operator) {
                 case '+':
                     result = num1 + num2;
@@ -63,7 +63,7 @@ public class Calculator {
                         System.out.println("나눗셈 연산에서 분모(두 번째 정수)에 0이 입력될 수 없습니다.");
                         continue;
                     }
-                    result = num1 / num2;
+                    result = (double) num1 / num2;
                     break;
                 default:
                     System.out.println("잘못된 입력입니다.");

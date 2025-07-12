@@ -42,14 +42,14 @@ public class Main {
             System.out.print("사칙연산 기호를 입력하세요: ");
             String operatorInput =  scanner.nextLine().trim();
             //사칙연산 기호 입력 예외 처리
-            if (operatorInput.isEmpty()){
+            if (operatorInput.length() != 1){
                 System.out.println("잘못된 입력입니다.");
                 continue;
             }
             char operator = operatorInput.charAt(0);
 
             //Calculator class 이용하여 연산 처리
-            Integer result = calculator.calculate(num1, num2, operator);
+            Double result = calculator.calculate(num1, num2, operator);
             if (result  == null) {
                 continue;
             }
@@ -78,7 +78,7 @@ public class Main {
         calculator.removeResult();
         System.out.println("삭제 후 연산 결과 목록: " + calculator.getResults());
         System.out.println("연산 결과를 [1, 2, 3, 4]로 설정합니다..");
-        calculator.setResults(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
+        calculator.setResults(new ArrayList<>(Arrays.asList(1.0, 2.0, 3.0, 4.0)));
         System.out.println("설정 후 연산 결과 목록: " + calculator.getResults());
     }
 }
