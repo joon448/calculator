@@ -119,11 +119,11 @@ calculator/
 #### 🟦 Lv 2. primitive type에 null 반환 불가
 - **원인:** `double`는 primitive type이므로 `null` 저장 불가
 - **해결:** `Double` (Wrapper Class)로 변경하여 null 사용 가능
-- 
+
 #### 🟦 Lv 2. 자동 빌드가 안 되는 문제
 - **원인:** 인텔리제이의 자동 빌드 설정이 꺼짐
 - **해결:** Settings -> Compiler -> Build project automatically 체크
-- 
+
 #### 🟦 Lv 2. src 폴더가 인식되지 않는 문제 
 - **원인:** 인텔리제이의 오류인 것 같다
 - **해결:** File -> Project Structure -> Modules -> import Module -> 프로젝트 경로 -> Create module from existing sources -> 모듈 생성하기
